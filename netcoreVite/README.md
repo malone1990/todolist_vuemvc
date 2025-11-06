@@ -28,6 +28,25 @@ This is a project template for building a web application using .Net Core as the
 └── DotVue.csproj     # Project file
 ```
 
+## How to Update the Culomn in TodoItem
+
+### add packages
+```bash
+# 安装EF Core核心包（提供ORM基础功能）
+dotnet add package Microsoft.EntityFrameworkCore
+
+# 安装SQLite数据库适配器
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite
+
+# 安装EF Core设计工具（提供迁移命令支持）
+dotnet add package Microsoft.EntityFrameworkCore.Design
+```
+### update datebase after change the properties of TodoItem
+```bash
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+dotnet ef migrations list
+```
 ## How to Run and Debug
 
 ### Backend (.Net Core)
