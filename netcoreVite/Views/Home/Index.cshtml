@@ -1,0 +1,22 @@
+@model List<DotVue.Models.TodoItem>
+
+@{
+    ViewData["Title"] = "Todo List (混合模式)";
+}
+
+<!-- Razor服务器端渲染的页面标题 -->
+<h1>@ViewData["Title"]</h1>
+<p>这个页面由Razor View和Vue3混合渲染</p>
+<!-- Vue组件的挂载容器 -->
+<div id="todo-app"></div>
+<!-- 服务器端渲染的当前时间 -->
+<p>服务器时间：@DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")</p>
+<!-- 1. 注入初始数据：Razor → Vue -->
+<!-- 使用Html.Raw避免HTML编码，确保JSON格式正确 -->
+<script>
+    window.__INITIAL_DATA__ = @Html.Raw(Json.Serialize(Model));
+</script>
+
+<!-- 2. 引入Vue编译后的JS文件（位于wwwroot/js） -->
+<link rel="stylesheet" href="~/js/app.css">
+<script src="~/js/app.js"></script>
