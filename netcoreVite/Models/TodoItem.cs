@@ -22,5 +22,6 @@ public class TodoItem
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     // 修改时间
+    // [JsonConverter(typeof(JsonDateTimeConverter))] //单独绑定某个属性的转换rule
     public DateTime ModifiedAt { get; set; } = DateTime.UtcNow;
 }
